@@ -29,40 +29,97 @@ public class CadastroDeConsulta {
     }
 
 
-    public String getPacientes(String plano){
+    public String getPacientes(int plano){
         String saida = "";
         Consulta cons;
-        for (int i = 0; i < listaConsulta.size();i++){
+
+        for (int i = 0; i < listaConsulta.size();i++) {
             cons = listaConsulta.get(i);
-            if (cons.getPlano().equals(plano)){
-                saida = "Paciente :" + cons.getNomePaciente() + " Matrícula: " + cons.getMatricula() + "\n";
+            switch (plano) {
+                case 1:
+                    if (cons instanceof ConsultaPrata) {
+                        saida = "Paciente :" + cons.getNomePaciente() + " Matrícula: " + cons.getMatricula() + "\n";}
+                    break;
+                case 2:
+                    if (cons instanceof ConsultaOuro) {
+                        saida = "Paciente :" + cons.getNomePaciente() + " Matrícula: " + cons.getMatricula() + "\n";}
+                        break;
+                case 3:
+                    if (cons instanceof ConsultaDiamante) {
+                        saida = "Paciente :" + cons.getNomePaciente() + " Matrícula: " + cons.getMatricula() + "\n";}
+                    break;
+                case 4:
+                    if (cons instanceof ConsultaFamilia) {
+                        saida = "Paciente :" + cons.getNomePaciente() + " Matrícula: " + cons.getMatricula() + "\n";}
+                    break;
             }
         }
         return saida;
     }
 
-    public int getIntConsultas(String plano){
+    public int getIntConsultas(int plano){
         int saida = 0;
         Consulta cons;
         for (int i = 0; i < listaConsulta.size();i++){
             cons = listaConsulta.get(i);
-            if (cons.getPlano().equals(plano)){
-                saida++;
+            switch (plano) {
+                case 1:
+                    if (cons instanceof ConsultaPrata) {
+                        saida++;
+                    }
+                    break;
+                case 2:
+                    if (cons instanceof ConsultaOuro) {
+                        saida++;
+                    }
+                    break;
+                case 3:
+                    if (cons instanceof ConsultaDiamante) {
+                        saida++;
+                    }
+                    break;
+                case 4:
+                    if (cons instanceof ConsultaFamilia) {
+                        saida++;
+                    }
+                    break;
             }
         }
         return saida;
     }
 
-    public int getValorTotal(String plano){
-        int saida = 0 ;
+    public double getValorTotal(int plano){
+        double saida = 0;
         Consulta cons;
         for (int i = 0; i < listaConsulta.size();i++){
             cons = listaConsulta.get(i);
-            if (cons.getPlano().equals(plano)){
-                saida++;
+            switch (plano) {
+                case 1:
+                    if (cons instanceof ConsultaPrata) {
+                        saida = cons.getValorConsulta();
+                    }
+                    break;
+                case 2:
+                    if (cons instanceof ConsultaOuro) {
+                        saida = cons.getValorConsulta();
+                    }
+                    break;
+                case 3:
+                    if (cons instanceof ConsultaDiamante) {
+                        saida = cons.getValorConsulta();
+                    }
+                    break;
+                case 4:
+                    if (cons instanceof ConsultaFamilia) {
+                        saida = cons.getValorConsulta();
+                    }
+                    break;
             }
         }
         return saida;
     }
+
+
+
 }
 
